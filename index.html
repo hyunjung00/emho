@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="EMHO: EMbodied Agent Harness Optimization via Experience Traces. Research overview, main results, and qualitative analysis.">
+  <meta name="theme-color" content="#ffffff">
+  <title>EMHO: EMbodied Agent Harness Optimization via Experience Traces</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23333'/%3E%3Cpath d='M9 8v16m14-16v16M9 16h14' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <section class="hero container" aria-labelledby="project-title">
+      <h1 id="project-title">EMHO</h1>
+      <p class="paper-title">EMbodied Agent Harness Optimization<br class="desktop-break"> via Experience Traces</p>
+      <div class="authors" aria-label="Authors">
+        <span>Hyun Jung Lee<sup>1</sup></span>
+        <span>Jungtaek Kim<sup>2</sup></span>
+        <span>Jongwon Jeong<sup>3</sup></span>
+        <span>Tae-Eui Kam<sup>1</sup></span>
+        <span>Donghyun Kim<sup>1,*</sup></span>
+        <span>Yong Jae Lee<sup>3,*</sup></span>
+      </div>
+      <p class="affiliations"><span><sup>1</sup> Korea University</span><span><sup>2</sup> University of Arkansas – Fayetteville</span><span><sup>3</sup> University of Wisconsin–Madison</span></p>
+      <p class="author-note">* Corresponding authors</p>
+      <div class="resources" aria-label="Project resources">
+        <button type="button" disabled aria-label="arXiv, coming soon">arXiv <span>Coming soon</span></button>
+        <button type="button" disabled aria-label="Code, coming soon">Code <span>Coming soon</span></button>
+      </div>
+    </section>
+    <figure class="overview container"><img src="overview.webp" width="2600" height="649" alt="Overview of EMHO and EMHO-Merge: collecting execution traces, revising the embodied-agent harness, and refining shared behavior using episode-level gains and losses."></figure>
+    <section class="section abstract-section" aria-labelledby="abstract-title"><h2 id="abstract-title">Abstract</h2><p>Improving embodied agents often focuses on optimizing the underlying model through training, while the surrounding agent harness that controls planning, context, and tool use is typically engineered. We ask whether this harness can instead improve itself directly from experience traces under sparse environmental feedback. We propose <strong>EMbodied Agent Harness Optimization (EMHO)</strong>, a self-evolving framework that keeps the embodied model frozen and iteratively revises its harness by analyzing execution trajectories and prior harness history. EMHO optimizes beyond skills or recovery prompts, modifying how the agent monitors progress, uses vision tools, grounds observations, and responds to failures. To support multiple subtasks with a single harness, we introduce <strong>EMHO-Merge</strong>, which addresses trade-offs in jointly optimizing a single shared harness across subtasks by using episode-level gains and losses to guide evidence-supported refinement of when and how revised behaviors are applied. We evaluate EMHO on EmbodiedBench across navigation and manipulation tasks, and EMHO consistently improves task success for both Qwen 9B and 27B models. Qualitative analysis shows that EMHO goes beyond recovering from failures and unproductive actions to reshape how the embodied agent interprets and interacts with its environment.</p></section>
+    <section class="section container" aria-labelledby="results-title">
+      <h2 id="results-title">Results</h2>
+      <p class="table-note">Success rates (%) on EmbodiedBench. EMHO entries report the best score attained on each split over optimization iterations. Search and held-out maxima may occur at different iterations. Bold entries follow the main table in the paper.</p>
+      <div class="table-wrap" tabindex="0" aria-label="Navigation results; scroll horizontally on small screens"><table><caption>Navigation</caption><thead><tr><th scope="col">Method / Model</th><th scope="col">Avg</th><th scope="col">Base</th><th scope="col">Common</th><th scope="col">Complex</th><th scope="col">Visual</th><th scope="col">Long</th></tr></thead><tbody>
+<tr><th scope="row">GPT-5</th><td>56.8</td><td>62.0</td><td>62.0</td><td>68.0</td><td>50.0</td><td>42.0</td></tr>
+<tr><th scope="row">Claude-4.6-Sonnet</th><td>62.2</td><td>68.0</td><td>63.0</td><td><strong>77.0</strong></td><td>55.0</td><td>48.0</td></tr>
+<tr><th scope="row">Gemini-2.0-flash</th><td>48.7</td><td>63.3</td><td>65.0</td><td>50.0</td><td>51.7</td><td>13.3</td></tr>
+<tr><th scope="row">InternVL3-78B</th><td>53.7</td><td>66.7</td><td>63.3</td><td>61.7</td><td>45.0</td><td>31.7</td></tr>
+<tr><th scope="row">gemma-3-27b-it</th><td>45.3</td><td>53.3</td><td>45.0</td><td>61.7</td><td>50.0</td><td>16.7</td></tr>
+<tr class="group-start"><th scope="row">One-Shot Harness w/ Opus (Qwen3.5-9B)</th><td>53.3</td><td>56.7</td><td>60.0</td><td>63.3</td><td>36.7</td><td>50.0</td></tr>
+<tr><th scope="row">One-Shot Harness w/ Sol (Qwen3.5-9B)</th><td>49.3</td><td>50.0</td><td>53.3</td><td>63.3</td><td>40.0</td><td>40.0</td></tr>
+<tr><th scope="row">One-Shot Harness w/ Opus (Qwen3.8-27B)</th><td>67.7</td><td>78.3</td><td>70.0</td><td>75.0</td><td>58.3</td><td>56.7</td></tr>
+<tr><th scope="row">One-Shot Harness w/ Sol (Qwen3.8-27B)</th><td>65.7</td><td>73.3</td><td>70.0</td><td>61.7</td><td>63.3</td><td>60.0</td></tr>
+<tr class="group-start"><th scope="row">Initial Harness (Search, Qwen3.5-9B)</th><td>50.0</td><td>58.3</td><td>46.7</td><td>65.0</td><td>40.0</td><td>40.0</td></tr>
+<tr><th scope="row">Initial Harness (Held-out, Qwen3.5-9B)</th><td>48.7</td><td>58.3</td><td>53.3</td><td>58.3</td><td>33.3</td><td>40.0</td></tr>
+<tr class="emho-row"><th scope="row">EMHO (Search, Qwen3.5-9B)</th><td>63.0</td><td>71.7</td><td>70.0</td><td>70.0</td><td>50.0</td><td>53.3</td></tr>
+<tr class="emho-row"><th scope="row">EMHO (Held-out, Qwen3.5-9B)</th><td>56.7</td><td>66.7</td><td>60.0</td><td>65.0</td><td>40.0</td><td>51.7</td></tr>
+<tr class="group-start"><th scope="row">Initial Harness (Search, Qwen3.8-27B)</th><td>54.7</td><td>60.0</td><td>60.0</td><td>50.0</td><td>50.0</td><td>53.3</td></tr>
+<tr><th scope="row">Initial Harness (Held-out, Qwen3.8-27B)</th><td>66.0</td><td>73.3</td><td>63.3</td><td>66.7</td><td>66.7</td><td>60.0</td></tr>
+<tr class="emho-row"><th scope="row">EMHO (Search, Qwen3.8-27B)</th><td>67.3</td><td>76.7</td><td><strong>76.7</strong></td><td>63.3</td><td>63.3</td><td>56.7</td></tr>
+<tr class="emho-row"><th scope="row">EMHO (Held-out, Qwen3.8-27B)</th><td><strong>75.3</strong></td><td><strong>86.7</strong></td><td><strong>76.7</strong></td><td>73.3</td><td><strong>76.7</strong></td><td><strong>63.3</strong></td></tr>
+</tbody></table></div>
+<div class="table-wrap" tabindex="0" aria-label="Manipulation results; scroll horizontally on small screens"><table><caption>Manipulation</caption><thead><tr><th scope="col">Method / Model</th><th scope="col">Avg</th><th scope="col">Base</th><th scope="col">Common</th><th scope="col">Complex</th><th scope="col">Visual</th><th scope="col">Spatial</th></tr></thead><tbody>
+<tr><th scope="row">GPT-5</th><td>26.8</td><td>21.0</td><td>25.0</td><td>31.0</td><td>22.0</td><td>35.0</td></tr>
+<tr><th scope="row">Claude-4.6-Sonnet</th><td>37.6</td><td>40.0</td><td>35.0</td><td><strong>40.0</strong></td><td>36.0</td><td>37.0</td></tr>
+<tr><th scope="row">Gemini-2.0-flash</th><td>16.5</td><td>14.6</td><td>8.3</td><td>14.6</td><td>13.9</td><td>31.3</td></tr>
+<tr><th scope="row">InternVL3-78B</th><td>26.3</td><td>29.2</td><td>22.9</td><td>22.9</td><td>25.0</td><td>31.3</td></tr>
+<tr><th scope="row">gemma-3-27b-it</th><td>17.5</td><td>25.0</td><td>16.7</td><td>16.7</td><td>8.3</td><td>20.8</td></tr>
+<tr class="group-start"><th scope="row">One-Shot Harness w/ Opus (Qwen3.5-9B)</th><td>13.2</td><td>10.4</td><td>16.7</td><td>12.5</td><td>13.9</td><td>12.5</td></tr>
+<tr><th scope="row">One-Shot Harness w/ Sol (Qwen3.5-9B)</th><td>11.8</td><td>12.5</td><td>6.3</td><td>10.4</td><td>11.1</td><td>18.8</td></tr>
+<tr><th scope="row">One-Shot Harness w/ Opus (Qwen3.8-27B)</th><td>27.8</td><td>22.9</td><td>20.8</td><td>29.2</td><td>38.9</td><td>27.1</td></tr>
+<tr><th scope="row">One-Shot Harness w/ Sol (Qwen3.8-27B)</th><td>25.3</td><td>25.0</td><td>25.0</td><td>27.1</td><td>22.2</td><td>27.1</td></tr>
+<tr class="group-start"><th scope="row">Initial Harness (Search, Qwen3.5-9B)</th><td>9.7</td><td>8.3</td><td>8.3</td><td>6.3</td><td>11.1</td><td>14.6</td></tr>
+<tr><th scope="row">Initial Harness (Held-out, Qwen3.5-9B)</th><td>10.7</td><td>6.3</td><td>4.2</td><td>8.3</td><td>22.2</td><td>12.5</td></tr>
+<tr class="emho-row"><th scope="row">EMHO (Search, Qwen3.5-9B)</th><td>18.3</td><td>14.6</td><td>12.5</td><td>16.7</td><td>25.0</td><td>22.9</td></tr>
+<tr class="emho-row"><th scope="row">EMHO (Held-out, Qwen3.5-9B)</th><td>21.0</td><td>14.6</td><td>20.8</td><td>18.8</td><td>36.1</td><td>14.6</td></tr>
+<tr class="group-start"><th scope="row">Initial Harness (Search, Qwen3.8-27B)</th><td>23.9</td><td>16.7</td><td>12.5</td><td>29.2</td><td>44.4</td><td>16.7</td></tr>
+<tr><th scope="row">Initial Harness (Held-out, Qwen3.8-27B)</th><td>26.4</td><td>25.0</td><td>25.0</td><td>29.2</td><td>27.8</td><td>25.0</td></tr>
+<tr class="emho-row"><th scope="row">EMHO (Search, Qwen3.8-27B)</th><td><strong>44.2</strong></td><td><strong>50.0</strong></td><td><strong>41.7</strong></td><td>37.5</td><td><strong>50.0</strong></td><td><strong>41.7</strong></td></tr>
+<tr class="emho-row"><th scope="row">EMHO (Held-out, Qwen3.8-27B)</th><td>39.4</td><td>41.7</td><td><strong>41.7</strong></td><td>33.3</td><td>38.9</td><td><strong>41.7</strong></td></tr>
+</tbody></table></div>
+    </section>
+    <section class="section container qualitative" aria-labelledby="qualitative-title">
+      <h2 id="qualitative-title">Qualitative Analysis</h2>
+      <h3>Recovery Edits</h3>
+      <p>EMHO improves how the agent responds to invalid actions and recognizes valid actions that fail to make progress.</p>
+      <figure><img src="recovery.webp" width="2600" height="1440" loading="lazy" alt="Qualitative examples of recovery edits: observation frames from initial and evolved trajectories, corresponding harness changes, and analyses of their effects."></figure>
+      <h3>Non-Recovery Edits</h3>
+      <p>EMHO also changes progress monitoring, vision-tool orchestration, and visual grounding during ongoing interaction.</p>
+      <figure><img src="behaviors.webp" width="2600" height="2131" loading="lazy" alt="Qualitative examples of non-recovery edits: progress monitoring, tool orchestration, and visual grounding, with observation frames, harness changes, and effect analyses."></figure>
+    </section>
+  </main>
+</body>
+</html>
