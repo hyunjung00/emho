@@ -2,7 +2,7 @@
 
 Project website for **EMHO: EMbodied Agent Harness Optimization via Experience Traces**.
 
-This static page contains the author list and affiliations, the framework overview, the abstract, held-out result comparisons, shared-harness and context-ablation results, the paper’s complete main results tables, two episode-comparison videos, and qualitative analysis figures. The design uses a navy theme with responsive layouts. arXiv and Code links are marked Coming soon.
+This static page contains the author list and affiliations, two episode-comparison videos directly below the title, a single-column abstract, the framework overview, main and shared-harness results, and qualitative analysis figures. It uses a white background, one sans-serif font stack, and restrained navy/blue accents. Navigation and manipulation videos sit side by side on larger screens and stack on phones. All result tables are always visible and fit the page without horizontal scrolling. arXiv and Code links are marked Coming soon.
 
 ## Local preview
 
@@ -21,7 +21,7 @@ Publish this repository from the `main` branch and root (`/`) folder in **Settin
 - `assets/videos/navigation.mp4`: long-horizon navigation, episode 43; initial harness on the left and evolved harness on the right.
 - `assets/videos/*-poster.jpg`: poster frames for the two videos.
 
-The 204 numeric results and bold formatting in the two main benchmark tables are preserved from the paper. Additional shared-harness and context-ablation comparisons are drawn from Table 3 and Appendix Table 5. Main EMHO scores are split-wise maxima over 10 optimization iterations; search and held-out maxima can occur at different iterations. Held-out results are retrospective summaries, not a single search-selected harness's generalization estimate. Held-out scores and trajectories are not supplied to the optimizer. Differences marked pp are percentage points.
+The 204 numeric results and bold formatting in the two main benchmark tables are preserved from the paper. Additional shared-harness comparisons are drawn from Table 3. Main EMHO scores are split-wise maxima over 10 optimization iterations; search and held-out maxima can occur at different iterations. Held-out results are retrospective summaries, not a single search-selected harness's generalization estimate. Held-out scores and trajectories are not supplied to the optimizer.
 
 The supplied videos are silent H.264 MP4 files with web-compatible pixel format and faststart metadata. Native playback controls and inline mobile playback are enabled, with no autoplay. The source videos were losslessly remuxed; the imagery was not recompressed.
 

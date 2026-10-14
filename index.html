@@ -3,46 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="EMHO improves embodied-agent harnesses from experience traces while keeping the model frozen. Explore results, side-by-side demonstrations, and qualitative analysis.">
-  <meta name="theme-color" content="#10243e">
-  <meta property="og:title" content="EMHO — Embodied Agent Harness Optimization">
-  <meta property="og:description" content="The model stays frozen. The harness evolves. Improving embodied agents through experience traces.">
+  <meta name="description" content="EMHO: EMbodied Agent Harness Optimization via Experience Traces. Research results and comparisons of initial and evolved harnesses for navigation and manipulation.">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="EMHO: Embodied Agent Harness Optimization">
+  <meta property="og:description" content="Improving embodied-agent harnesses from experience traces while keeping the model frozen.">
   <meta property="og:type" content="website">
   <title>EMHO: EMbodied Agent Harness Optimization via Experience Traces</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2310243e'/%3E%3Cpath d='M9 8v16m14-16v16M9 16h14' stroke='%23dce7ff' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d3e66'/%3E%3Cpath d='M9 8v16m14-16v16M9 16h14' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <nav class="nav container" aria-label="Main navigation">
-      <a class="nav-brand" href="#top" aria-label="EMHO, back to top">EMHO<span aria-hidden="true">.</span></a>
-      <div class="nav-links">
-        <a href="#overview">Overview</a>
-        <a href="#results">Results</a>
-        <a href="#demos">Demos</a>
-        <a href="#analysis">Analysis</a>
-      </div>
-      <span class="nav-caption">Research project</span>
-    </nav>
-  </header>
   <main id="main">
-    <section class="hero" id="top" aria-labelledby="project-title">
-      <div class="container">
-        <div class="hero-topline"><p class="eyebrow">Embodied AI &nbsp;/&nbsp; Harness optimization</p><span class="hero-marker" aria-hidden="true">From experience to action</span></div>
-        <div class="hero-grid">
-          <div class="hero-heading">
-            <h1 id="project-title">EMHO<span aria-hidden="true">.</span></h1>
-            <p class="paper-title">EMbodied Agent Harness Optimization<br class="desktop-break"> via Experience Traces</p>
-          </div>
-          <div class="hero-aside">
-            <p class="hero-premise">The model stays frozen.<br><em>The harness evolves.</em></p>
-            <p class="hero-description">An embodied agent learns from its execution traces to improve how it plans, observes, and acts.</p>
-            <a class="text-link light-link" href="#demos">See it in action <span aria-hidden="true">↗</span></a>
-          </div>
-        </div>
-        <div class="hero-meta">
-          <div class="authors" aria-label="Authors">
+    <header class="hero container" id="top">
+      <h1 id="project-title">EMHO</h1>
+      <p class="paper-title">EMbodied Agent Harness Optimization<br class="desktop-break"> via Experience Traces</p>
+      <div class="authors" aria-label="Authors">
             <span>Hyun Jung Lee<sup>1</sup></span>
             <span>Jungtaek Kim<sup>2</sup></span>
             <span>Jongwon Jeong<sup>3</sup></span>
@@ -50,121 +26,56 @@
             <span>Donghyun Kim<sup>1,*</sup></span>
             <span>Yong Jae Lee<sup>3,*</sup></span>
           </div>
-          <p class="affiliations"><span><sup>1</sup> Korea University</span><span><sup>2</sup> University of Arkansas</span><span><sup>3</sup> University of Wisconsin–Madison</span></p>
-          <div class="hero-bottomline">
-            <p class="author-note">* Corresponding authors</p>
-            <div class="resources" aria-label="Project resources">
-              <span class="resource-status"><span>Paper / arXiv</span><span class="coming-soon">Coming soon</span></span>
-              <span class="resource-status"><span>Code</span><span class="coming-soon">Coming soon</span></span>
-            </div>
-          </div>
-        </div>
+      <p class="affiliations"><span><sup>1</sup> Korea University</span><span><sup>2</sup> University of Arkansas</span><span><sup>3</sup> University of Wisconsin–Madison</span></p>
+      <p class="author-note">* Corresponding authors</p>
+      <div class="resources" aria-label="Project resources">
+        <span class="resource-status">Paper / arXiv <small>Coming soon</small></span>
+        <span class="resource-status">Code <small>Coming soon</small></span>
+      </div>
+    </header>
+
+    <section class="demos container" id="demos" aria-label="Episode comparisons">
+      <div class="video-grid">
+        <article class="demo-case" aria-labelledby="navigation-demo-title">
+          <h2 id="navigation-demo-title">Navigation</h2>
+          <p class="demo-meta">Long horizon · Episode 43</p>
+          <video width="1048" height="736" controls playsinline preload="metadata" poster="assets/videos/navigation-poster.jpg" aria-label="Navigation: initial and evolved harness comparison" aria-describedby="navigation-video-caption"><source src="assets/videos/navigation.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/navigation.mp4">Download the navigation comparison.</a></video>
+          <p class="video-caption" id="navigation-video-caption">Navigate to the box. The initial harness (left) repeatedly becomes blocked and fails after 20 steps; the evolved harness (right) succeeds in 18 steps on the same episode.</p>
+          <a class="video-link" href="assets/videos/navigation.mp4" target="_blank" rel="noopener">Open full-size video</a>
+        </article>
+        <article class="demo-case" aria-labelledby="manipulation-demo-title">
+          <h2 id="manipulation-demo-title">Manipulation</h2>
+          <p class="demo-meta">Spatial relationship · Episode 39</p>
+          <video width="1048" height="736" controls playsinline preload="metadata" poster="assets/videos/manipulation-poster.jpg" aria-label="Manipulation: initial and evolved harness comparison" aria-describedby="manipulation-video-caption"><source src="assets/videos/manipulation.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/manipulation.mp4">Download the manipulation comparison.</a></video>
+          <p class="video-caption" id="manipulation-video-caption">“Wipe the right area.” The initial harness (left) fails; the evolved harness (right) succeeds on the same spatial manipulation episode.</p>
+          <a class="video-link" href="assets/videos/manipulation.mp4" target="_blank" rel="noopener">Open full-size video</a>
+        </article>
       </div>
     </section>
 
-    <section class="section overview-section" id="overview" aria-labelledby="overview-title">
-      <div class="container">
-        <div class="section-heading">
-          <div><p class="eyebrow section-label"><span>01</span> The idea</p><h2 id="overview-title">Experience becomes<br>agent behavior.</h2></div>
-          <p class="section-intro">Beyond optimizing the model: EMHO revises the harness around it—planning, context, tool use, and responses to failure—using evidence from previous interactions.</p>
-        </div>
-        <figure class="research-figure overview-figure">
-          <img src="overview.webp" width="2600" height="649" alt="Overview of EMHO and EMHO-Merge: collecting execution traces, revising the embodied-agent harness, and refining shared behavior using episode-level gains and losses.">
-          <figcaption><span class="figure-number">The framework</span> EMHO evolves individual harnesses from experience. EMHO-Merge refines shared behavior across subtasks.</figcaption>
-        </figure>
-        <div class="method-steps" aria-label="Method at a glance">
-          <div><span class="step-number">01 / Trace</span><h3>Learn from execution.</h3><p>Analyze trajectories and harness history under sparse environmental feedback.</p></div>
-          <div><span class="step-number">02 / Optimize</span><h3>Revise the harness.</h3><p>Improve agent behavior while keeping the underlying embodied model frozen.</p></div>
-          <div><span class="step-number">03 / Merge</span><h3>Refine shared behavior.</h3><p>Use episode-level gains and losses to reconcile harness changes across subtasks.</p></div>
-        </div>
-        <div class="abstract-block" aria-labelledby="abstract-title">
-          <h3 id="abstract-title">Abstract</h3>
-          <p>Improving embodied agents often focuses on optimizing the underlying model through training, while the surrounding agent harness that controls planning, context, and tool use is typically engineered. We ask whether this harness can instead improve itself directly from experience traces under sparse environmental feedback. We propose <strong>EMbodied Agent Harness Optimization (EMHO)</strong>, a self-evolving framework that keeps the embodied model frozen and iteratively revises its harness by analyzing execution trajectories and prior harness history. EMHO optimizes beyond skills or recovery prompts, modifying how the agent monitors progress, uses vision tools, grounds observations, and responds to failures. To support multiple subtasks with a single harness, we introduce <strong>EMHO-Merge</strong>, which addresses trade-offs in jointly optimizing a single shared harness across subtasks by using episode-level gains and losses to guide evidence-supported refinement of when and how revised behaviors are applied. We evaluate EMHO on EmbodiedBench across navigation and manipulation tasks, and EMHO consistently improves task success for both Qwen 9B and 27B models. Qualitative analysis shows that EMHO goes beyond recovering from failures and unproductive actions to reshape how the embodied agent interprets and interacts with its environment.</p>
-        </div>
-      </div>
+    <section class="abstract section" id="abstract" aria-labelledby="abstract-title">
+      <h2 id="abstract-title">Abstract</h2>
+      <p>Improving embodied agents often focuses on optimizing the underlying model through training, while the surrounding agent harness that controls planning, context, and tool use is typically engineered. We ask whether this harness can instead improve itself directly from experience traces under sparse environmental feedback. We propose <strong>EMbodied Agent Harness Optimization (EMHO)</strong>, a self-evolving framework that keeps the embodied model frozen and iteratively revises its harness by analyzing execution trajectories and prior harness history. EMHO optimizes beyond skills or recovery prompts, modifying how the agent monitors progress, uses vision tools, grounds observations, and responds to failures. To support multiple subtasks with a single harness, we introduce <strong>EMHO-Merge</strong>, which addresses trade-offs in jointly optimizing a single shared harness across subtasks by using episode-level gains and losses to guide evidence-supported refinement of when and how revised behaviors are applied. We evaluate EMHO on EmbodiedBench across navigation and manipulation tasks, and EMHO consistently improves task success for both Qwen 9B and 27B models. Qualitative analysis shows that EMHO goes beyond recovering from failures and unproductive actions to reshape how the embodied agent interprets and interacts with its environment.</p>
     </section>
 
-    <section class="section results-section" id="results" aria-labelledby="results-title">
-      <div class="container">
-        <div class="section-heading">
-          <div><p class="eyebrow section-label"><span>02</span> Quantitative results</p><h2 id="results-title">Same model.<br>A stronger harness.</h2></div>
-          <p class="section-intro">EMHO improves held-out task success in both navigation and manipulation, for both model sizes evaluated on EmbodiedBench.</p>
-        </div>
-        <div class="results-topline"><h3>Held-out success rate</h3><div class="chart-legend" aria-label="Chart legend"><span><i class="legend-initial" aria-hidden="true"></i> Initial harness</span><span><i class="legend-evolved" aria-hidden="true"></i> EMHO</span></div></div>
-        <div class="result-comparisons">
-          <article class="domain-result" aria-labelledby="navigation-summary-title">
-            <div class="domain-title"><h4 id="navigation-summary-title">Navigation</h4><span>Success rate (%)</span></div>
-            <div class="comparison">
-              <div class="comparison-label"><span>Qwen3.5-9B</span><span class="gain">+8.0 <abbr title="percentage points">pp</abbr></span></div>
-              <div class="comparison-score"><span>48.7</span><span class="score-arrow" aria-hidden="true">→</span><strong>56.7<span>%</span></strong></div>
-              <div class="bar-pair" aria-hidden="true"><div class="bar initial" style="--value:48.7%"></div><div class="bar evolved" style="--value:56.7%"></div></div>
-              <p class="sr-only">Initial harness: 48.7 percent. EMHO: 56.7 percent. Improvement: 8.0 percentage points.</p>
-            </div>
-            <div class="comparison">
-              <div class="comparison-label"><span>Qwen3.8-27B</span><span class="gain">+9.3 <abbr title="percentage points">pp</abbr></span></div>
-              <div class="comparison-score"><span>66.0</span><span class="score-arrow" aria-hidden="true">→</span><strong>75.3<span>%</span></strong></div>
-              <div class="bar-pair" aria-hidden="true"><div class="bar initial" style="--value:66%"></div><div class="bar evolved" style="--value:75.3%"></div></div>
-              <p class="sr-only">Initial harness: 66.0 percent. EMHO: 75.3 percent. Improvement: 9.3 percentage points.</p>
-            </div>
-          </article>
-          <article class="domain-result" aria-labelledby="manipulation-summary-title">
-            <div class="domain-title"><h4 id="manipulation-summary-title">Manipulation</h4><span>Success rate (%)</span></div>
-            <div class="comparison">
-              <div class="comparison-label"><span>Qwen3.5-9B</span><span class="gain">+10.3 <abbr title="percentage points">pp</abbr></span></div>
-              <div class="comparison-score"><span>10.7</span><span class="score-arrow" aria-hidden="true">→</span><strong>21.0<span>%</span></strong></div>
-              <div class="bar-pair" aria-hidden="true"><div class="bar initial" style="--value:10.7%"></div><div class="bar evolved" style="--value:21%"></div></div>
-              <p class="sr-only">Initial harness: 10.7 percent. EMHO: 21.0 percent. Improvement: 10.3 percentage points.</p>
-            </div>
-            <div class="comparison">
-              <div class="comparison-label"><span>Qwen3.8-27B</span><span class="gain">+13.0 <abbr title="percentage points">pp</abbr></span></div>
-              <div class="comparison-score"><span>26.4</span><span class="score-arrow" aria-hidden="true">→</span><strong>39.4<span>%</span></strong></div>
-              <div class="bar-pair" aria-hidden="true"><div class="bar initial" style="--value:26.4%"></div><div class="bar evolved" style="--value:39.4%"></div></div>
-              <p class="sr-only">Initial harness: 26.4 percent. EMHO: 39.4 percent. Improvement: 13.0 percentage points.</p>
-            </div>
-          </article>
-        </div>
-        <aside class="results-caveat" aria-label="How to interpret these results"><span class="note-label">Reading the results</span><p>EMHO values report the <strong>best score on each split over 10 optimization iterations</strong>. Held-out scores are retrospective summaries, not the performance of a single search-selected harness; search and held-out maxima can occur at different iterations. No held-out feedback is supplied to the optimizer. Improvements above are in percentage points (pp).</p></aside>
-        <div class="additional-results">
-          <section class="merge-study" aria-labelledby="merge-title">
-            <div class="study-copy">
-              <p class="study-kicker">A shared harness across subtasks</p>
-              <h3 id="merge-title">Merge with evidence.</h3>
-              <p>Pooling experience across subtasks can create trade-offs. EMHO-Merge compares episodes gained and lost to refine <em>when</em> revised behaviors should activate in a shared harness.</p>
-              <div class="merge-gains"><p><strong>+6.7<span>pp</span></strong><span>Navigation</span></p><p><strong>+5.1<span>pp</span></strong><span>Manipulation</span></p></div>
-              <p class="study-note">Improvement over combined EMHO in the 27B, three-subtask search setting (paper, Table 3). Separate EMHO uses distinct harnesses for each subtask; EMHO-Merge does not exceed that setting on manipulation.</p>
-            </div>
-            <div class="merge-data">
-              <div class="merge-table-wrap" tabindex="0" aria-label="EMHO-Merge comparison results; scroll horizontally on small screens">
-                <table class="merge-table">
-                  <caption>Qwen3.8-27B · Search split · Success rate (%)</caption>
-                  <thead><tr><th scope="col">Harness</th><th scope="col">Navigation</th><th scope="col">Manipulation</th></tr></thead>
-                  <tbody>
-                    <tr><th scope="row">Initial</th><td>54.4</td><td>25.9</td></tr>
-                    <tr><th scope="row">EMHO · Separate</th><td>65.6</td><td>47.2</td></tr>
-                    <tr><th scope="row">EMHO · Combined</th><td>61.1</td><td>34.7</td></tr>
-                    <tr class="emho-row"><th scope="row">EMHO-Merge</th><td>67.8</td><td>39.8</td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <p class="study-note">Navigation: Base, Visual Appearance, Long Horizon.<br>Manipulation: Base, Visual Appearance, Spatial Relationship.<br>These are three-subtask averages, distinct from the full benchmark above.</p>
-            </div>
-          </section>
-          <section class="ablation-study" aria-labelledby="ablation-title">
-            <div class="study-copy"><p class="study-kicker">What makes optimization work?</p><h3 id="ablation-title">Traces and history<br>work together.</h3><p>Removing either execution traces or harness history lowers success in this ablation. Full context gives the strongest result among the settings evaluated here.</p><p class="study-note">Qwen3.8-27B · Navigation Base · Search split<br>Context ablation, Appendix Table 5.</p></div>
-            <div class="ablation-results" aria-label="Context ablation success rates">
-              <div class="ablation-row"><div><strong>Full EMHO</strong><strong>76.7%</strong></div><div class="ablation-track" aria-hidden="true"><span style="--value:76.7%"></span></div></div>
-              <div class="ablation-row"><div><span>Without execution traces</span><span>70.0%</span></div><div class="ablation-track" aria-hidden="true"><span style="--value:70%"></span></div></div>
-              <div class="ablation-row"><div><span>Without harness history</span><span>66.7%</span></div><div class="ablation-track" aria-hidden="true"><span style="--value:66.7%"></span></div></div>
-              <div class="ablation-row"><div><span>Score only</span><span>63.3%</span></div><div class="ablation-track" aria-hidden="true"><span style="--value:63.3%"></span></div></div>
-            </div>
-          </section>
-        </div>
-        <div class="full-results">
-          <div class="subsection-heading"><h3>The full picture</h3><p>Complete benchmark comparisons · Success rate (%)</p></div>
-          <p class="table-note">Bold entries follow the main table in the paper. EMHO entries use the per-split maxima described above. On small screens, scroll within each table to view all subtasks.</p>
-          <details class="result-table" open>
-            <summary><span>Navigation</span><span class="summary-meta">Full benchmark results <span class="expand-icon" aria-hidden="true">+</span></span></summary>
-<div class="table-wrap" tabindex="0" aria-label="Navigation results; scroll horizontally on small screens"><table><caption>Navigation</caption><thead><tr><th scope="col">Method / Model</th><th scope="col">Avg</th><th scope="col">Base</th><th scope="col">Common</th><th scope="col">Complex</th><th scope="col">Visual</th><th scope="col">Long</th></tr></thead><tbody>
+    <section class="overview section container" id="overview" aria-labelledby="overview-title">
+      <h2 id="overview-title">Method Overview</h2>
+      <figure>
+        <img src="overview.webp" width="2600" height="649" loading="lazy" alt="Overview of EMHO and EMHO-Merge: collecting execution traces, revising the embodied-agent harness, and refining shared behavior using episode-level gains and losses.">
+        <figcaption class="figure-caption">EMHO evolves individual harnesses from experience while keeping the embodied model frozen. EMHO-Merge refines shared behavior across subtasks.</figcaption>
+      </figure>
+    </section>
+
+    <section class="results section container" id="results" aria-labelledby="results-title">
+      <h2 id="results-title">Results</h2>
+      <p class="section-intro">EMHO improves task success on EmbodiedBench for both model sizes across navigation and manipulation.</p>
+      <ul class="result-summary">
+        <li><strong>Navigation:</strong> held-out average success increases from 48.7% to 56.7% for the 9B model and from 66.0% to 75.3% for the 27B model.</li>
+        <li><strong>Manipulation:</strong> held-out average success increases from 10.7% to 21.0% for the 9B model and from 26.4% to 39.4% for the 27B model.</li>
+      </ul>
+      <p class="results-note">Success rates (%). EMHO entries report the best score on each split over 10 optimization iterations; search and held-out maxima may occur at different iterations. Held-out scores are retrospective summaries, not the performance of a single search-selected harness. No held-out feedback is supplied to the optimizer. Bold entries follow the paper.</p>
+      <div class="benchmark">
+        <table class="benchmark-table"><caption>Navigation</caption><thead><tr><th scope="col">Method / Model</th><th scope="col">Avg</th><th scope="col">Base</th><th scope="col">Common</th><th scope="col">Complex</th><th scope="col">Visual</th><th scope="col">Long</th></tr></thead><tbody>
 <tr><th scope="row">GPT-5</th><td>56.8</td><td>62.0</td><td>62.0</td><td>68.0</td><td>50.0</td><td>42.0</td></tr>
 <tr><th scope="row">Claude-4.6-Sonnet</th><td>62.2</td><td>68.0</td><td>63.0</td><td><strong>77.0</strong></td><td>55.0</td><td>48.0</td></tr>
 <tr><th scope="row">Gemini-2.0-flash</th><td>48.7</td><td>63.3</td><td>65.0</td><td>50.0</td><td>51.7</td><td>13.3</td></tr>
@@ -182,11 +93,10 @@
 <tr><th scope="row">Initial Harness (Held-out, Qwen3.8-27B)</th><td>66.0</td><td>73.3</td><td>63.3</td><td>66.7</td><td>66.7</td><td>60.0</td></tr>
 <tr class="emho-row"><th scope="row">EMHO (Search, Qwen3.8-27B)</th><td>67.3</td><td>76.7</td><td><strong>76.7</strong></td><td>63.3</td><td>63.3</td><td>56.7</td></tr>
 <tr class="emho-row"><th scope="row">EMHO (Held-out, Qwen3.8-27B)</th><td><strong>75.3</strong></td><td><strong>86.7</strong></td><td><strong>76.7</strong></td><td>73.3</td><td><strong>76.7</strong></td><td><strong>63.3</strong></td></tr>
-</tbody></table></div>
-          </details>
-          <details class="result-table">
-            <summary><span>Manipulation</span><span class="summary-meta">Full benchmark results <span class="expand-icon" aria-hidden="true">+</span></span></summary>
-<div class="table-wrap" tabindex="0" aria-label="Manipulation results; scroll horizontally on small screens"><table><caption>Manipulation</caption><thead><tr><th scope="col">Method / Model</th><th scope="col">Avg</th><th scope="col">Base</th><th scope="col">Common</th><th scope="col">Complex</th><th scope="col">Visual</th><th scope="col">Spatial</th></tr></thead><tbody>
+</tbody></table>
+      </div>
+      <div class="benchmark">
+        <table class="benchmark-table"><caption>Manipulation</caption><thead><tr><th scope="col">Method / Model</th><th scope="col">Avg</th><th scope="col">Base</th><th scope="col">Common</th><th scope="col">Complex</th><th scope="col">Visual</th><th scope="col">Spatial</th></tr></thead><tbody>
 <tr><th scope="row">GPT-5</th><td>26.8</td><td>21.0</td><td>25.0</td><td>31.0</td><td>22.0</td><td>35.0</td></tr>
 <tr><th scope="row">Claude-4.6-Sonnet</th><td>37.6</td><td>40.0</td><td>35.0</td><td><strong>40.0</strong></td><td>36.0</td><td>37.0</td></tr>
 <tr><th scope="row">Gemini-2.0-flash</th><td>16.5</td><td>14.6</td><td>8.3</td><td>14.6</td><td>13.9</td><td>31.3</td></tr>
@@ -204,52 +114,40 @@
 <tr><th scope="row">Initial Harness (Held-out, Qwen3.8-27B)</th><td>26.4</td><td>25.0</td><td>25.0</td><td>29.2</td><td>27.8</td><td>25.0</td></tr>
 <tr class="emho-row"><th scope="row">EMHO (Search, Qwen3.8-27B)</th><td><strong>44.2</strong></td><td><strong>50.0</strong></td><td><strong>41.7</strong></td><td>37.5</td><td><strong>50.0</strong></td><td><strong>41.7</strong></td></tr>
 <tr class="emho-row"><th scope="row">EMHO (Held-out, Qwen3.8-27B)</th><td>39.4</td><td>41.7</td><td><strong>41.7</strong></td><td>33.3</td><td>38.9</td><td><strong>41.7</strong></td></tr>
-</tbody></table></div>
-          </details>
-        </div>
+</tbody></table>
       </div>
+
+      <section class="merge-study" aria-labelledby="merge-title">
+        <h3 id="merge-title">EMHO-Merge</h3>
+        <p>EMHO-Merge uses episode-level gains and losses to refine when revised behavior should activate in a shared harness. In the 27B three-subtask search setting, it improves average success over combined EMHO from 61.1% to 67.8% for navigation and from 34.7% to 39.8% for manipulation.</p>
+        <table class="merge-table">
+                  <caption>Qwen3.8-27B · Search split · Success rate (%)</caption>
+                  <thead><tr><th scope="col">Harness</th><th scope="col">Navigation</th><th scope="col">Manipulation</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">Initial</th><td>54.4</td><td>25.9</td></tr>
+                    <tr><th scope="row">EMHO · Separate</th><td>65.6</td><td>47.2</td></tr>
+                    <tr><th scope="row">EMHO · Combined</th><td>61.1</td><td>34.7</td></tr>
+                    <tr class="emho-row"><th scope="row">EMHO-Merge</th><td>67.8</td><td>39.8</td></tr>
+                  </tbody>
+                </table>
+        <p class="study-note">Paper, Table 3. Navigation includes Base, Visual Appearance, and Long Horizon; manipulation includes Base, Visual Appearance, and Spatial Relationship. These are three-subtask averages. Separate EMHO uses a distinct harness for each subtask and remains stronger than EMHO-Merge on manipulation.</p>
+      </section>
     </section>
 
-    <section class="section demos-section" id="demos" aria-labelledby="demos-title">
-      <div class="container">
-        <div class="section-heading">
-          <div><p class="eyebrow section-label"><span>03</span> In action</p><h2 id="demos-title">Watch the<br>harness evolve.</h2></div>
-          <p class="section-intro">Two tasks, two views of the same episode. Each video compares the initial and evolved harnesses side by side.</p>
-        </div>
-        <article class="demo-case" aria-labelledby="manipulation-demo-title">
-          <div class="demo-heading"><div><p class="demo-index">Case study 01 / Manipulation</p><h3 id="manipulation-demo-title">Spatial manipulation</h3></div><span class="episode-tag">Episode 39</span></div>
-          <figure class="video-figure">
-            <div class="video-shell"><video width="1048" height="736" controls playsinline preload="metadata" poster="assets/videos/manipulation-poster.jpg" aria-label="Spatial manipulation episode 39: initial and evolved harness comparison" aria-describedby="manipulation-video-caption"><source src="assets/videos/manipulation.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/manipulation.mp4">Download the manipulation comparison.</a></video></div><div class="video-labels" aria-hidden="true"><span>Left / Initial harness</span><span>Right / Evolved harness</span></div>
-            <figcaption id="manipulation-video-caption"><p>Task: “Wipe the right area.” The initial harness (left) fails; the evolved harness (right) succeeds on the same spatial manipulation episode.</p><a class="text-link" href="assets/videos/manipulation.mp4" target="_blank" rel="noopener">Open video <span aria-hidden="true">↗</span></a></figcaption>
-          </figure>
-        </article>
-        <article class="demo-case" aria-labelledby="navigation-demo-title">
-          <div class="demo-heading"><div><p class="demo-index">Case study 02 / Navigation</p><h3 id="navigation-demo-title">Long-horizon navigation</h3></div><span class="episode-tag">Episode 43</span></div>
-          <figure class="video-figure">
-            <div class="video-shell"><video width="1048" height="736" controls playsinline preload="metadata" poster="assets/videos/navigation-poster.jpg" aria-label="Long-horizon navigation episode 43: initial and evolved harness comparison" aria-describedby="navigation-video-caption"><source src="assets/videos/navigation.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/navigation.mp4">Download the navigation comparison.</a></video></div><div class="video-labels" aria-hidden="true"><span>Left / Initial harness</span><span>Right / Evolved harness</span></div>
-            <figcaption id="navigation-video-caption"><p>Task: navigate to the box and get as close as possible. The initial harness (left) repeatedly becomes blocked and fails after 20 steps; the evolved harness (right) succeeds in 18 steps on the same episode.</p><a class="text-link" href="assets/videos/navigation.mp4" target="_blank" rel="noopener">Open video <span aria-hidden="true">↗</span></a></figcaption>
-          </figure>
-        </article>
-      </div>
-    </section>
-
-    <section class="section analysis-section" id="analysis" aria-labelledby="analysis-title">
-      <div class="container">
-        <div class="section-heading">
-          <div><p class="eyebrow section-label"><span>04</span> Qualitative analysis</p><h2 id="analysis-title">Beyond recovering<br>from mistakes.</h2></div>
-          <p class="section-intro">Harness optimization changes both how agents recover from failure and how they interpret and interact with their environment during ongoing execution.</p>
-        </div>
-        <article class="analysis-case" aria-labelledby="recovery-title">
-          <div class="analysis-heading"><h3 id="recovery-title">Recovery edits</h3><p>Responding to invalid actions—and recognizing valid actions that do not make progress.</p></div>
-          <figure class="research-figure"><a class="figure-link" href="recovery.webp" target="_blank" rel="noopener" aria-label="Open full-resolution recovery edits figure"><img src="recovery.webp" width="2600" height="1440" loading="lazy" alt="Qualitative examples of recovery edits: observation frames from initial and evolved trajectories, corresponding harness changes, and analyses of their effects."></a><figcaption><span class="figure-number">Recovery</span> Initial and evolved trajectories, their harness changes, and the effects on agent behavior. <a href="recovery.webp" target="_blank" rel="noopener">View full size <span aria-hidden="true">↗</span></a></figcaption></figure>
-        </article>
-        <article class="analysis-case" aria-labelledby="behavior-title">
-          <div class="analysis-heading"><h3 id="behavior-title">Non-recovery edits</h3><p>Reshaping progress monitoring, vision-tool orchestration, and visual grounding.</p></div>
-          <figure class="research-figure"><a class="figure-link" href="behaviors.webp" target="_blank" rel="noopener" aria-label="Open full-resolution non-recovery edits figure"><img src="behaviors.webp" width="2600" height="2131" loading="lazy" alt="Qualitative examples of non-recovery edits: progress monitoring, tool orchestration, and visual grounding, with observation frames, harness changes, and effect analyses."></a><figcaption><span class="figure-number">Beyond recovery</span> Changes to the way the agent observes, grounds, and coordinates its actions. <a href="behaviors.webp" target="_blank" rel="noopener">View full size <span aria-hidden="true">↗</span></a></figcaption></figure>
-        </article>
-      </div>
+    <section class="qualitative section container" id="analysis" aria-labelledby="analysis-title">
+      <h2 id="analysis-title">Qualitative Analysis</h2>
+      <article aria-labelledby="recovery-title">
+        <h3 id="recovery-title">Recovery Edits</h3>
+        <p>EMHO improves how the agent responds to invalid actions and recognizes valid actions that fail to make progress.</p>
+        <figure><a href="recovery.webp" target="_blank" rel="noopener" aria-label="Open full-resolution recovery edits figure"><img src="recovery.webp" width="2600" height="1440" loading="lazy" alt="Initial and evolved trajectories, corresponding harness changes, and analyses of recovery behavior."></a><figcaption class="figure-caption"><a href="recovery.webp" target="_blank" rel="noopener">View full-size figure</a></figcaption></figure>
+      </article>
+      <article aria-labelledby="behavior-title">
+        <h3 id="behavior-title">Non-Recovery Edits</h3>
+        <p>EMHO also changes progress monitoring, vision-tool orchestration, and visual grounding during ongoing interaction.</p>
+        <figure><a href="behaviors.webp" target="_blank" rel="noopener" aria-label="Open full-resolution non-recovery edits figure"><img src="behaviors.webp" width="2600" height="2131" loading="lazy" alt="Initial and evolved behavior in progress monitoring, tool orchestration, and visual grounding, with corresponding harness changes."></a><figcaption class="figure-caption"><a href="behaviors.webp" target="_blank" rel="noopener">View full-size figure</a></figcaption></figure>
+      </article>
     </section>
   </main>
-  <footer class="site-footer"><div class="container footer-inner"><a class="footer-brand" href="#top">EMHO<span aria-hidden="true">.</span></a><p>EMbodied Agent Harness Optimization<br>via Experience Traces</p><a class="back-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></div></footer>
+  <footer class="site-footer container"><span>EMHO</span><a href="#top">Back to top</a></footer>
 </body>
 </html>
