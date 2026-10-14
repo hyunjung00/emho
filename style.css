@@ -177,9 +177,16 @@ tbody .group-start { border-top: 1px solid #a6b2bf; }
 .study-note { margin-top: 14px; color: var(--muted); font-size: 13px; }
 
 .qualitative article + article { margin-top: 40px; }
+.analysis-intro { max-width: 900px; margin: 0 auto 30px; }
 .qualitative h3 { margin-bottom: 12px; text-align: center; }
 .qualitative article > p { max-width: 900px; margin: 0 auto 22px; }
 .qualitative figure { margin-top: 20px; }
+.analysis-details { max-width: 900px; margin: 26px auto 0; }
+.analysis-item + .analysis-item { margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--line); }
+.analysis-item h4 { margin: 0 0 8px; color: var(--navy); font-size: 18px; line-height: 1.4; }
+.analysis-item p + p { margin-top: 9px; }
+.analysis-finding, .analysis-source { color: var(--muted); font-size: 13px; line-height: 1.7; }
+.analysis-source { max-width: 900px; margin: 26px auto 0; }
 .site-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 56px; padding-block: 23px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
 .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .site-footer p, .back-top { color: var(--muted); font-size: 12px; }

@@ -10,7 +10,7 @@
   <meta property="og:type" content="website">
   <title>EMHO: EMbodied Agent Harness Optimization via Experience Traces</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d3e66'/%3E%3Cpath d='M9 8v16m14-16v16M9 16h14' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="style.css?v=11d424f97f7c">
+  <link rel="stylesheet" href="style.css?v=60652a901a11">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -151,16 +151,45 @@
 
     <section class="qualitative section container" id="analysis" aria-labelledby="analysis-title">
       <h2 id="analysis-title">Qualitative Analysis</h2>
+      <p class="analysis-intro">What changes when the model stays frozen but its harness evolves? We compare initial and evolved behavior on held-out trajectories, primarily with the 27B model, and group the changes into five types.</p>
       <article aria-labelledby="recovery-title">
         <h3 id="recovery-title">Recovery Edits</h3>
-        <p>EMHO improves how the agent responds to invalid actions and recognizes valid actions that fail to make progress.</p>
-        <figure><a href="recovery.webp" target="_blank" rel="noopener" aria-label="Open full-resolution recovery edits figure"><img src="recovery.webp" width="2600" height="1440" loading="lazy" alt="Initial and evolved trajectories, corresponding harness changes, and analyses of recovery behavior."></a><figcaption class="figure-caption"><a href="recovery.webp" target="_blank" rel="noopener">View full-size figure</a></figcaption></figure>
+        <p>Recovery edits govern what happens after an action fails or the trajectory stops making progress. The key distinction is whether the environment reports a failure or the harness must recognize ineffective behavior itself.</p>
+        <figure><a href="recovery.webp" target="_blank" rel="noopener" aria-label="Open full-resolution recovery edits figure"><img src="recovery.webp" width="2600" height="1440" loading="lazy" alt="Invalid-action recovery in navigation and valid-but-ineffective action recovery in manipulation: initial and evolved trajectories, harness changes, and behavioral analyses."></a><figcaption class="figure-caption">Each row shows (a) initial and evolved trajectories, (b) the corresponding harness changes, and (c) their behavioral effects. <a href="recovery.webp" target="_blank" rel="noopener">View full-size figure</a></figcaption></figure>
+        <div class="analysis-details">
+          <div class="analysis-item">
+            <h4>Invalid-Action Recovery</h4>
+            <p><strong>Use explicit failure feedback to change the next attempt.</strong> A blocked or invalid action becomes a constraint on subsequent planning. In navigation, EMHO retains blocked directions and prompts the agent to reorient or take a short detour before approaching the target again. In manipulation, it carries execution errors, such as path-generation failures, into replanning so the agent can revise the target location or approach direction.</p>
+          </div>
+          <div class="analysis-item">
+            <h4>Valid-but-Ineffective Action Recovery</h4>
+            <p><strong>Recognize lack of progress even when actions are valid.</strong> Repeated rotations, reversals, or grasp attempts can execute successfully without completing the task. EMHO checks recent actions and observations for these patterns and requires a meaningful change in strategy. Navigation can break out of rotation loops; manipulation can revise the grasp point, approach height, or object estimate instead of reissuing the same plan.</p>
+            <p class="analysis-finding">In the manipulation analysis, identical replans decrease from approximately 21% to 18%, and repeated grasps at the same coordinates from approximately 30% to 26%.</p>
+          </div>
+        </div>
       </article>
       <article aria-labelledby="behavior-title">
         <h3 id="behavior-title">Non-Recovery Edits</h3>
-        <p>EMHO also changes progress monitoring, vision-tool orchestration, and visual grounding during ongoing interaction.</p>
-        <figure><a href="behaviors.webp" target="_blank" rel="noopener" aria-label="Open full-resolution non-recovery edits figure"><img src="behaviors.webp" width="2600" height="2131" loading="lazy" alt="Initial and evolved behavior in progress monitoring, tool orchestration, and visual grounding, with corresponding harness changes."></a><figcaption class="figure-caption"><a href="behaviors.webp" target="_blank" rel="noopener">View full-size figure</a></figcaption></figure>
+        <p>Non-recovery edits shape ongoing decisions without requiring a failure signal. They change how the agent tracks progress, selects useful visual evidence, and connects what it sees to its next action.</p>
+        <figure><a href="behaviors.webp" target="_blank" rel="noopener" aria-label="Open full-resolution non-recovery edits figure"><img src="behaviors.webp" width="2600" height="2131" loading="lazy" alt="Progress monitoring in manipulation, tool selection in navigation, and visual grounding in manipulation, with initial and evolved trajectories, harness changes, and behavioral analyses."></a><figcaption class="figure-caption">From top to bottom: progress monitoring, tool selection and orchestration, and perception and visual grounding. Columns show (a) trajectories, (b) harness changes, and (c) behavioral analyses. <a href="behaviors.webp" target="_blank" rel="noopener">View full-size figure</a></figcaption></figure>
+        <div class="analysis-details">
+          <div class="analysis-item">
+            <h4>Progress Monitoring</h4>
+            <p><strong>Track what has changed and what remains to be done.</strong> In navigation, EMHO compares successive views, including the target's apparent position and size, to assess whether motion is bringing the agent closer. In manipulation, it tracks approach, grasp, lift, translate, and release. The current gripper and object state guide the next unfinished phase, helping the agent continue a partially completed task instead of restarting the sequence.</p>
+          </div>
+          <div class="analysis-item">
+            <h4>Tool Selection and Orchestration</h4>
+            <p><strong>Choose vision tools for the uncertainty that matters next.</strong> Depth estimation supports obstacle, proximity, and clearance reasoning; segmentation helps identify a target; and zoom reveals finer details in a relevant region. In the navigation example, the evolved harness uses depth after blocked moves to inform its next action. In manipulation, it requests depth proactively for height-sensitive interactions such as stacking and container placement.</p>
+            <p class="analysis-finding">After blocked navigation moves, depth-tool use rises from approximately 70% to nearly 100%, alongside an increase in valid subsequent actions from approximately 44% to 68%.</p>
+          </div>
+          <div class="analysis-item">
+            <h4>Perception and Visual Grounding</h4>
+            <p><strong>Connect the intended object to an action grounded in the current view.</strong> Navigation compares candidate targets using attributes from the instruction and uses the selected visual evidence to guide motion. Manipulation distinguishes object identity from executable grasp coordinates and re-evaluates both during planning. In the wiping example, the evolved harness distinguishes the sponge from the colored surface regions and selects the sponge's location.</p>
+            <p class="analysis-finding">In the spatial-relation analysis, incorrect object selection in initial plans decreases from 50% to 34%. This measures object choice during planning, rather than fine-grained grasp-coordinate accuracy.</p>
+          </div>
+        </div>
       </article>
+      <p class="analysis-source">These are behavioral measurements, not overall task success rates. See Section 5 and Appendix D of <a href="https://arxiv.org/abs/2610.08432" target="_blank" rel="noopener">the paper</a> for the full analyses.</p>
     </section>
   </main>
   <footer class="site-footer container"><span>EMHO</span><a href="#top">Back to top</a></footer>

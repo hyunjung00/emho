@@ -28,3 +28,5 @@ The supplied videos are silent H.264 MP4 files with web-compatible pixel format 
 The website code is newly authored, with design inspiration from [CounterCurate](https://countercurate.github.io/).
 
 The inline arXiv and GitHub logo paths are from [Simple Icons](https://github.com/simple-icons/simple-icons). They are bundled in the page and require no external icon library.
+
+Qualitative Analysis explains the five edit categories in Section 5 and Appendix D: invalid-action recovery, valid-but-ineffective action recovery, progress monitoring, tool selection and orchestration, and perception and visual grounding. Each description connects the harness change to navigation and manipulation behavior. Reported behavioral frequencies are labeled separately from task success rates. The text was checked against the current manuscript on October 14, 2026.
