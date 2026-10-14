@@ -2,7 +2,7 @@
 
 Project website for **EMHO: EMbodied Agent Harness Optimization via Experience Traces**.
 
-This static page contains the author list and affiliations, two episode-comparison videos directly below the title, a single-column abstract, the framework overview, main and shared-harness results, and qualitative analysis figures. It uses a white background, one sans-serif font stack, and restrained navy/blue accents. Navigation and manipulation videos sit side by side on larger screens and stack on phones. All result tables are always visible and fit the page without horizontal scrolling. arXiv and Code links are marked Coming soon.
+This static page contains the author list and affiliations, two episode-comparison videos directly below the title, a single-column abstract, main and shared-harness results, and qualitative analysis figures. It uses a white background, one sans-serif font stack, and restrained navy/blue accents. Navigation and manipulation videos sit side by side on larger screens and stack on phones. Results include initial-to-EMHO percentage comparisons and percentage-point gains. All result tables are always visible and fit the page without horizontal scrolling. The black resource buttons link to [the paper on arXiv](https://arxiv.org/abs/2610.08432) and mark Code as Coming soon until a research code repository is provided.
 
 ## Local preview
 
@@ -26,3 +26,5 @@ The 204 numeric results and bold formatting in the two main benchmark tables are
 The supplied videos are silent H.264 MP4 files with web-compatible pixel format and faststart metadata. Native playback controls and inline mobile playback are enabled, with no autoplay. The source videos were losslessly remuxed; the imagery was not recompressed.
 
 The website code is newly authored, with design inspiration from [CounterCurate](https://countercurate.github.io/).
+
+The inline arXiv and GitHub logo paths are from [Simple Icons](https://github.com/simple-icons/simple-icons). They are bundled in the page and require no external icon library.
