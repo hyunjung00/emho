@@ -84,24 +84,27 @@ abbr[title] { text-decoration: none; }
   font-size: 14px;
 }
 .author-note { margin-top: 6px; color: var(--muted); font-size: 12px; }
-.resources { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 18px; }
+.resources { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; margin-top: 18px; }
 .resource-button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  min-height: 42px;
-  padding: 8px 18px;
-  border: 1px solid #242424;
+  height: 40px;
+  min-width: 98px;
+  padding: 7px 19px;
+  border: 1px solid transparent;
   border-radius: 999px;
-  background: #242424;
+  background: #363636;
   color: #fff;
   font: inherit;
-  font-size: 15px;
-  line-height: 1.4;
+  font-size: 16px;
+  line-height: 1.5;
   text-decoration: none;
+  white-space: nowrap;
 }
-.resource-button svg { width: 18px; height: 18px; flex: 0 0 18px; fill: currentColor; }
-a.resource-button:hover { background: #080808; border-color: #080808; text-decoration: none; }
+.resource-button svg { width: 16px; height: 16px; flex: 0 0 16px; margin-left: -4px; fill: currentColor; }
+a.resource-button:hover { background: #292929; text-decoration: none; }
 .resource-button:disabled { opacity: 1; cursor: default; }
 .resource-button small { color: #d5d5d5; font-size: 11px; }
 
